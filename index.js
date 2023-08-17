@@ -15,8 +15,8 @@ const calculateOrderAmount = (items) => {
 app.post("/create-payment-intent", async (req, res) => {
   const items = req.body;
   const customer = await stripe.customers.create({
-    // email: 'rjhrabowskie@gmail.com',
-    // name: "RJH",
+    email: items.Email,
+    name: items.Name,
   });
   const ephemeralKey = await stripe.ephemeralKeys.create(
     {customer: customer.id},
