@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
-// This is your test secret API key. 'sk_live_Fsir0gwhS2v4zCChSZPtp0Gn', 'sk_test_j3rUbfQFSKDTE2ehB31TjWez'
-const stripe = require("stripe")('sk_test_51NbiEjG1o8Hlx628ptBM1MgykKc1G8GVDAFfNXo1jiYVPxEKehxX1DdqORb8aGMhhOfrC54Etzr8g9dhtg8I4OTo00nS8xEQbS');
+// This is your test secret API key. 'sk_test_51NbiEjG1o8Hlx628ptBM1MgykKc1G8GVDAFfNXo1jiYVPxEKehxX1DdqORb8aGMhhOfrC54Etzr8g9dhtg8I4OTo00nS8xEQbS'
+// Live Key. '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'
+const stripe = require("stripe")('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');
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -44,8 +45,8 @@ app.post("/create-payment-intent", async (req, res) => {
     clientSecret: paymentIntent.client_secret,
     ephemeralKey: ephemeralKey.secret,
     customer: customer.id,
-    publishableKey: 'pk_test_51NbiEjG1o8Hlx628TkLNU2psfDEIhEcgSMab1ylvq5OaHW8dc6C60Cq6IF0BQIZyj0EJF1mLhhhCfZHSLIOHXjVF006iI7Y7Go'
-  }); // 'pk_test_VdkpTEyCv5wC2o4BuF6j375E'
-});
+    publishableKey: 'pk_live_51NbiEjG1o8Hlx628Fydn2FtmPQcxlBvGzjQib0RNHfLTznumh2ePqtcBzKLRHeQSTK1McsrRsnn1GJGuBKqmKCS800YSQTL9xD'
+  }); // 'pk_test_51NbiEjG1o8Hlx628TkLNU2psfDEIhEcgSMab1ylvq5OaHW8dc6C60Cq6IF0BQIZyj0EJF1mLhhhCfZHSLIOHXjVF006iI7Y7Go'
+}); // 'pk_live_51NbiEjG1o8Hlx628Fydn2FtmPQcxlBvGzjQib0RNHfLTznumh2ePqtcBzKLRHeQSTK1McsrRsnn1GJGuBKqmKCS800YSQTL9xD'
 
 app.listen(7070, () => console.log("Node server listening on port 7070!"));
