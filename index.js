@@ -18,6 +18,8 @@ app.post("/create-payment-intent", async (req, res) => {
     email: items.Email,
     name: items.Name,
   });
+  console.log("Name:", items.Name);
+  console.log("Email:", items.Email);
   const ephemeralKey = await stripe.ephemeralKeys.create(
     {customer: customer.id},
     {apiVersion: '2022-11-15'}
