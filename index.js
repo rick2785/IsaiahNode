@@ -20,6 +20,7 @@ app.post("/create-payment-intent", async (req, res) => {
   });
   console.log("Name:", items.Name);
   console.log("Email:", items.Email);
+
   const ephemeralKey = await stripe.ephemeralKeys.create(
     {customer: customer.id},
     {apiVersion: '2022-11-15'}
@@ -48,4 +49,4 @@ app.post("/create-payment-intent", async (req, res) => {
   });
 });
 
-app.listen(7070, () => console.log("Node server listening on port 7070!"));
+app.listen(process.env.PORT, () => console.log(`Node server listening on port ${process.env.PORT}!`));
