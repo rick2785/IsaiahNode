@@ -44,7 +44,7 @@ app.post("/create-payment-intent", async (req, res) => {
     clientSecret: paymentIntent.client_secret,
     ephemeralKey: ephemeralKey.secret,
     customer: customer.id,
-    publishableKey: process.env.API_LIVE_SKEY
+    publishableKey: process.env.API_LIVE_PKEY
   });
 });
 
