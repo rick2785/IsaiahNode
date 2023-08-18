@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const dotenv = require("dotenv");
-const stripe = require("stripe")(process.env['API_LIVE_SKEY']);
+require("dotenv").config();
+const stripe = require("stripe")(process.env.API_LIVE_SKEY);
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -37,10 +37,6 @@ app.post("/create-payment-intent", async (req, res) => {
     }, 
   });
   
-  // res.send({
-  //   clientSecret: paymentIntent.client_secret,
-  // });
-  
   res.json({
     clientSecret: paymentIntent.client_secret,
     ephemeralKey: ephemeralKey.secret,
@@ -49,4 +45,4 @@ app.post("/create-payment-intent", async (req, res) => {
   });
 });
 
-app.listen(process.env['PORT'], () => console.log(`Node server listening on port ${process.env['PORT']}!`));
+app.listen(process.env.PORT, () => console.log(`Node server listening on port ${process.env.PORT}!`));
