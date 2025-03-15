@@ -16,5 +16,5 @@
               API_LIVE_SKEY: ${{ secrets.API_LIVE_SKEY }}
             run: |
               echo "The secret is : $API_LIVE_SKEY"
-              node --e "console.log(process.env.API_LIVE_SKEY)"
+              node -e "console.log(process.env.API_LIVE_SKEY)"
               
