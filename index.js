@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-// This is your test secret API key. 'sk_test_51NbiEjG1o8Hlx628ptBM1MgykKc1G8GVDAFfNXo1jiYVPxEKehxX1DdqORb8aGMhhOfrC54Etzr8g9dhtg8I4OTo00nS8xEQbS'
-// Live Key. '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'
-const stripe = require("stripe")('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');
+// This is your test secret API key. 'sk_test_'
+// Live Key. 'sk_live_'
+const stripe = require("stripe")(process.env.API_LIVE_SKEY);
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -46,8 +46,8 @@ app.post("/create-payment-intent", async (req, res) => {
     clientSecret: paymentIntent.client_secret,
     ephemeralKey: ephemeralKey.secret,
     customer: customer.id,
-    publishableKey: 'pk_live_51NbiEjG1o8Hlx628Fydn2FtmPQcxlBvGzjQib0RNHfLTznumh2ePqtcBzKLRHeQSTK1McsrRsnn1GJGuBKqmKCS800YSQTL9xD'
-  }); // 'pk_test_51NbiEjG1o8Hlx628TkLNU2psfDEIhEcgSMab1ylvq5OaHW8dc6C60Cq6IF0BQIZyj0EJF1mLhhhCfZHSLIOHXjVF006iI7Y7Go'
-}); // 'pk_live_51NbiEjG1o8Hlx628Fydn2FtmPQcxlBvGzjQib0RNHfLTznumh2ePqtcBzKLRHeQSTK1McsrRsnn1GJGuBKqmKCS800YSQTL9xD'
+    publishableKey: process.env.API_LIVE_PKEY
+  }); // 'pk_test_'
+}); // 'pk_live_'
 
-app.listen(7070, () => console.log("Node server listening on port 7070!"));
+app.listen(process.env.PORT, () => console.log(`Node server listening on port ${process.env.PORT}!`));
