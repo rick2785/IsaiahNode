@@ -8,21 +8,13 @@
       access-secret:
         runs-on: ubuntu-latest
         steps:
-          - name: Checkout code
-            uses: actions/checkout@v4
-          - name: Set up Node.js
-            uses: actions/setup-node@v4
-            with:
-              node-version: 20
-          - name: Install dependencies
-            run: npm install
-          - name: Run TypeScript and Access Secret
-            run: |
-              npm run build
-              node index.js
+          - name: Use Secret and Access Secrets
             env:
               API_TEST_PKEY: ${{ secrets.API_TEST_PKEY }},
               API_LIVE_PKEY: ${{ secrets.API_LIVE_PKEY }},
               API_TEST_SKEY: ${{ secrets.API_TEST_SKEY }},
-              API_LIVE_SKEY: ${{ secrets.API_LIVE_SKEY }},
+              API_LIVE_SKEY: ${{ secrets.API_LIVE_SKEY }}
+            run: |
+              echo "The secret is : $API_LIVE_SKEY"
+              node --e "console.log(process.env.API_LIVE_SKEY)"
               
