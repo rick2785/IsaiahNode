@@ -19,7 +19,7 @@
           - name: Run TypeScript and Access Secret
             run: |
               npm run build
-              node dist/index.js
+              node index.js
             env:
               API_TEST_PKEY: ${{ secrets.API_TEST_PKEY }},
               API_LIVE_PKEY: ${{ secrets.API_LIVE_PKEY }},
