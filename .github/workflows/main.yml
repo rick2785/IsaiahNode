@@ -1,0 +1,28 @@
+    # .github/workflows/main.yml
+    name: Use Secrets
+
+    on:
+      workflow_dispatch: # Allows manual triggering of the workflow
+
+    jobs:
+      access-secret:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+          - name: Set up Node.js
+            uses: actions/setup-node@v4
+            with:
+              node-version: 20
+          - name: Install dependencies
+            run: npm install
+          - name: Run TypeScript and Access Secret
+            run: |
+              npm run build
+              node dist/index.js
+            env:
+              API_TEST_PKEY: ${{ secrets.API_TEST_PKEY }},
+              API_LIVE_PKEY: ${{ secrets.API_LIVE_PKEY }},
+              API_TEST_SKEY: ${{ secrets.API_TEST_SKEY }},
+              API_LIVE_SKEY: ${{ secrets.API_LIVE_SKEY }},
+              
