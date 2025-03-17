@@ -4,6 +4,7 @@ require("dotenv").config();
 // This is your test secret API key. 'sk_test_'
 // Live Key. 'sk_live_'
 const stripe = require("stripe")(process.env.API_LIVE_SKEY);
+// console.log("Here:", process.env.API_LIVE_SKEY);
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -35,7 +36,7 @@ app.post("/create-payment-intent", async (req, res) => {
     setup_future_usage: "off_session",
     automatic_payment_methods: {
       enabled: true,
-      allow_redirects: "never",
+      // allow_redirects: "never",
     }, 
   });
   
