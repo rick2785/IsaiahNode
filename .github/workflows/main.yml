@@ -16,6 +16,7 @@
               API_LIVE_SKEY: ${{ secrets.API_LIVE_SKEY }}
             run: |
               echo "The Test Publishable Key is : $API_TEST_PKEY"
+              node index.js
               node -e "console.log(process.env.API_TEST_PKEY)"
               echo "The Live Publishable Key is : $API_LIVE_PKEY"
               node -e "console.log(process.env.API_LIVE_PKEY)"
