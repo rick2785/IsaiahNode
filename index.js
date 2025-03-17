@@ -35,6 +35,7 @@ app.post("/create-payment-intent", async (req, res) => {
     setup_future_usage: "off_session",
     automatic_payment_methods: {
       enabled: true,
+      allow_redirects: "never",
     }, 
   });
   
