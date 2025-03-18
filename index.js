@@ -1,10 +1,12 @@
-const express = require("express");
+const dotenv = require('dotenv');
+dotenv.config();
+const express = require('express');
 const app = express();
-require("dotenv").config();
+
 // This is your test secret API key. 'sk_test_'
 // Live Key. 'sk_live_'
-const stripe = require("stripe")(process.env.API_LIVE_SKEY);
-// console.log("Here:", process.env.API_LIVE_SKEY);
+const stripe = require('stripe')(process.env.API_TEST_SKEY);
+console.log("Test Key:", process.env.API_TEST_SKEY);
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -25,7 +27,7 @@ app.post("/create-payment-intent", async (req, res) => {
   console.log("Email:", items.Email);
   const ephemeralKey = await stripe.ephemeralKeys.create(
     {customer: customer.id},
-    {apiVersion: '2022-11-15'}
+    {apiVersion: '2025-02-24.acacia'}
   );
 
   // Create a PaymentIntent with the order amount and currency
@@ -48,8 +50,9 @@ app.post("/create-payment-intent", async (req, res) => {
     clientSecret: paymentIntent.client_secret,
     ephemeralKey: ephemeralKey.secret,
     customer: customer.id,
-    publishableKey: process.env.API_LIVE_PKEY
-  }); // 'pk_test_'
+    publishableKey: process.env.API_TEST_PKEY,
+  });
+  console.log(`Publishable Key: ${process.env.API_TEST_PKEY}`)
 }); // 'pk_live_'
 
 app.listen(process.env.PORT, () => console.log(`Node server listening on port ${process.env.PORT}!`));

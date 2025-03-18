@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"The Test Secret is : $API_TEST_SKEY\" && exit 1"
   },
   "author": "Rickey Hrabowskie",
   "license": "MIT",
