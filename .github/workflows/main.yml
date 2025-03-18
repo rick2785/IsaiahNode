@@ -8,6 +8,15 @@
       access-secret:
         runs-on: ubuntu-latest
         steps:
+          - name: Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+              node-version: '18.16.0'
+          - name: Install dependencies
+            run: |
+                node --version
+                npm install
+        
           - name: Use Secrets and Access Secrets
             env:
               API_TEST_PKEY: ${{ secrets.API_TEST_PKEY }},
