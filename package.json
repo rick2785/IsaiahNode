@@ -9,10 +9,6 @@
     "v": "node -v",
     "i": "npm install"
   },
-  "engines": {
-    "node": ">=20.11.1",
-    "npm": ">=10.2.0"
-  },
   "author": "Rickey Hrabowskie",
   "license": "MIT",
   "dependencies": {
