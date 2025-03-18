@@ -15,7 +15,6 @@
               
           - name: Install dependencies
             run: |
-                node -version
                 npm install
         
           - name: Use Secrets and Access Secrets
