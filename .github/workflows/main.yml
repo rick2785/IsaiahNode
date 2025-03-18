@@ -12,10 +12,6 @@
             uses: actions/setup-node@v4
             with:
                 node-version: '18.16.0'
-              
-          - name: Install dependencies
-            run: |
-                npm i
         
           - name: Use Secrets and Access Secrets
             env:
@@ -24,7 +20,6 @@
               API_TEST_SKEY: ${{ secrets.API_TEST_SKEY }},
               API_LIVE_SKEY: ${{ secrets.API_LIVE_SKEY }}
             run: |
-              npm run start
               echo "The Test Publishable Key is : $API_TEST_PKEY"
               node -e "console.log(process.env.API_TEST_PKEY)"
               echo "The Live Publishable Key is : $API_LIVE_PKEY"
