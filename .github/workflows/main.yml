@@ -15,7 +15,7 @@
               
           - name: Install dependencies
             run: |
-                npm i
+                npm run i
         
           - name: Use Secrets and Access Secrets
             env:
