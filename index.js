@@ -5,7 +5,7 @@ const app = express();
 
 // This is your test secret API key. 'sk_test_'
 // Live Key. 'sk_live_'
-const stripe = require('stripe')(process.env.API_TEST_SKEY);
+const stripe = require('stripe')(process.env.API_LIVE_SKEY);
 // console.log('Test Key:', process.env.API_TEST_SKEY);
 
 app.use(express.static('public'));
@@ -50,7 +50,7 @@ app.post('/create-payment-intent', async (req, res) => {
     clientSecret: paymentIntent.client_secret,
     ephemeralKey: ephemeralKey.secret,
     customer: customer.id,
-    publishableKey: process.env.API_TEST_PKEY,
+    publishableKey: process.env.API_LIVE_PKEY,
   });
   // console.log(`Publishable Key: ${process.env.API_TEST_PKEY}`)
 }); // 'pk_live_'
